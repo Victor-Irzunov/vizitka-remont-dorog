@@ -1,30 +1,8 @@
-'use client'
-import { ModalUniversal } from '@/components/modal/ModalUniversal';
+
+import BtnComp from '@/components/btn/BtnComp';
 import Image from 'next/image';
-import { useState } from "react";
-// import SliderComp from '../components/slider/SliderComp';
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [title, setTitle] = useState('');
-  const [isActive, setIsActive] = useState({
-    konsultaciya: false,
-    tel: false
-  });
-  const handleCancel = () => {
-    setIsModalOpen(false)
-  };
-
-  const showModal = (title, active) => {
-    setIsModalOpen(true)
-    setTitle(title)
-    if (active === "konsultaciya") {
-      setIsActive(prev => ({ ...prev, konsultaciya: true, tel: false }))
-    }
-    if (active === "tel") {
-      setIsActive(prev => ({ ...prev, konsultaciya: false, tel: true, }))
-    }
-  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between" id='main'>
@@ -58,21 +36,7 @@ export default function Home() {
                 Устройство асфальтобетонных, цементобетонных покрытий и оснований
               </li>
             </ul>
-
-            <div className="mt-12 flex xz:flex-col-reverse xs:flex-row xz:items-start">
-              <button
-                className='text-white px-5 xz:mt-6 xs:mt-0 py-1 font-light rounded-2xl text-sm bg-[#65BB1E]'
-                onClick={() => showModal("Получить консультацию", "konsultaciya")}
-              >
-                Получить консультацию
-              </button>
-              {/* <button
-                className='xz:ml-0 xs:ml-5 px-5 py-1 font-light rounded-2xl text-sm bg-[#65BB1E]'
-                onClick={() => showModal("Заказать звонок", "tel")}
-              >
-                Заказать звонок
-              </button> */}
-            </div>
+            <BtnComp />
           </div>
           <div className='absolute bottom-0 right-3'>
             <Image src='/main/100.webp' alt='ремонт дорог' width={100} height={63} />
@@ -129,10 +93,10 @@ export default function Home() {
         <div className='container mx-auto'>
           <div className='text-center'>
             <h4 className='text-2xl uppercase text-white'>
-              Наш сертификат и аттестат
+              Наш сертификаты
             </h4>
           </div>
-          <div className='xz:flex-row sd:flex'>
+          <div className='xz:flex-row sd:flex justify-center items-center'>
             <Image
               src='/main/1.webp'
               alt='сертификат компании'
@@ -144,7 +108,22 @@ export default function Home() {
               alt='сертификат компании'
               className="object-cover w-full h-full mx-auto mt-12"
               style={{ width: 'auto', height: 'auto' }}
-              width={370} height={524} />
+              width={370} height={524}
+            />
+            <Image
+              src='/main/3.webp'
+              alt='сертификат компании'
+              className="object-cover w-full h-full mx-auto mt-12"
+              style={{ width: 'auto', height: 'auto' }}
+              width={370} height={524}
+            />
+            <Image
+              src='/main/4.webp'
+              alt='сертификат компании'
+              className="object-cover w-full h-full mx-auto mt-12"
+              style={{ width: 'auto', height: 'auto' }}
+              width={370} height={524}
+            />
           </div>
         </div>
       </section>
@@ -160,12 +139,6 @@ export default function Home() {
       </section>
 
 
-      <ModalUniversal
-        isModalOpen={isModalOpen}
-        title={title}
-        handleCancel={handleCancel}
-        isActive={isActive}
-      />
     </main>
   )
 }
